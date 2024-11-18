@@ -1,2 +1,8 @@
-# ... except the .gitignore...
+# ... ignore all ...
+*
+
+# ... except the .gitignore and others...
 !.gitkeep
+!*.ino
+!LICENSE
+!*.md
