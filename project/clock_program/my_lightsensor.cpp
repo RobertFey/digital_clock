@@ -61,6 +61,28 @@ void setup() {
   delay(500);
 }
 
+
+get_light_color() {
+      if (  !apds.readAmbientLight(ambient_light) ||
+          !apds.readRedLight(red_light) ||
+          !apds.readGreenLight(green_light) ||
+          !apds.readBlueLight(blue_light) )
+            } else {
+      Serial.print("Interrupt! Ambient: ");
+      Serial.print(ambient_light);
+      Serial.print(" R: ");
+      Serial.print(red_light);
+      Serial.print(" G: ");
+      Serial.print(green_light);
+      Serial.print(" B: ");
+      Serial.println(blue_light);
+    }
+  
+}
+
+
+
+
 void loop() {
   
   // If interrupt occurs, print out the light levels
