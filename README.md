@@ -20,7 +20,7 @@ The plan is to laser cut the case parts out of multiplex hardwood.
 The windows for all indications are made out of transparent or translucent rasin
 
 # hardware
-*. ESP32 WROVER
-*. LED WS2812B
-*. RGB sensor APDS 9960
-*. I2C memory for storing settings
+* ESP32 WROVER
+* LED WS2812B
+* RGB sensor APDS 9960
+* I2C memory for storing settings
