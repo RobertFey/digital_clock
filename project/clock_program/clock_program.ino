@@ -18,10 +18,10 @@ struct Data_RGBA {
 };
 
 void get_light_values(Data_RGBA &RGBA) {
-  uint16_t red_light = 0;
-  uint16_t green_light = 0;
-  uint16_t blue_light = 0;
-  uint16_t ambient_light = 0;
+  //uint16_t red_light = 0;
+  //uint16_t green_light = 0;
+  //uint16_t blue_light = 0;
+  //uint16_t ambient_light = 0;
   if (  !apds.readAmbientLight(ambient_light) ||
         !apds.readRedLight(red_light) ||
         !apds.readGreenLight(green_light) ||
