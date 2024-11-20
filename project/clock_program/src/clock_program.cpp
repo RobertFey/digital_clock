@@ -1,3 +1,4 @@
+#include <Arduino.h>
 #include <Wire.h>
 // #include <SparkFun_APDS9960.h>
 #include "Adafruit_APDS9960.h"
@@ -79,8 +80,8 @@ CRGBPalette16 currentPalette;
 TBlendType    currentBlending;
 Data_RGBA  lightsensor_data = {0,0,0,1};
 
-extern CRGBPalette16 myRedWhiteBluePalette;
-extern const TProgmemPalette16 myRedWhiteBluePalette_p PROGMEM;
+// extern CRGBPalette16 myRedWhiteBluePalette;
+// extern const TProgmemPalette16 myRedWhiteBluePalette_p PROGMEM;
 
 void setup() {
   delay( 3000 ); // power-up safety delay

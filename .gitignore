@@ -6,3 +6,5 @@
 !*.ino
 !LICENSE
 !*.md
+
+.fake
