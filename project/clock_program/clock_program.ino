@@ -1,4 +1,5 @@
-#include "my_lightsensor.h"
+#include <Wire.h>
+#include <SparkFun_APDS9960.h>
 
 // Pins
 #define APDS9960_INT    2  // Needs to be an interrupt pin
