@@ -11,12 +11,39 @@
 
 // Global variables
 SparkFun_APDS9960 apds = SparkFun_APDS9960();
-uint16_t ambient_light = 0;
 uint16_t red_light = 0;
 uint16_t green_light = 0;
 uint16_t blue_light = 0;
+uint16_t ambient_light = 0;
 int isr_flag = 0;
 uint16_t threshold = 0;
+
+struct Data_RGBA {
+  uint16_t red_light;
+  uint16_t green_light;
+  uint16_t blue_light;
+  uint16_t ambient_light;
+};
+
+void get_light_values(Data_RGBA &RGBA) {
+  uint16_t red_light = 0;
+  uint16_t green_light = 0;
+  uint16_t blue_light = 0;
+  uint16_t ambient_light = 0;
+  if (  !apds.readAmbientLight(ambient_light) ||
+        !apds.readRedLight(red_light) ||
+        !apds.readGreenLight(green_light) ||
+        !apds.readBlueLight(blue_light) ) {
+      break;
+    } else {
+      RGBA.red_light = red_light;
+      RGBA.green_light = green_light;
+      RGBA.blue_light = blue_light;
+      RGBA.ambient_light = ambient_light;
+  }
+}
+
+Data_RGBA = lightsensor_data;
 
 void setup() {
   
