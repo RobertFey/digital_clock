@@ -75,5 +75,8 @@ void loop() {
   Serial.print(lightsensor_data.green_light);
   Serial.print(" B: ");
   Serial.println(lightsensor_data.blue_light);
+  
+  // Wait 1 second before next reading
+  delay(1000);
 }
 
