@@ -1,6 +1,17 @@
 #include <Wire.h>
 #include <SparkFun_APDS9960.h>
 
+/***********************************************
+ IMPORTANT: The APDS-9960 can only accept 3.3V!
+ 
+ Arduino Pin  APDS-9960 Board  Function
+ 
+ 3.3V         VCC              Power
+ GND          GND              Ground
+ A4           SDA              I2C Data
+ A5           SCL              I2C Clock
+***********************************************/
+
 
 // Global variables
 SparkFun_APDS9960 apds = SparkFun_APDS9960();
