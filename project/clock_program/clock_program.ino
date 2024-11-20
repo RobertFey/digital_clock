@@ -1,5 +1,6 @@
 #include <Wire.h>
 #include <SparkFun_APDS9960.h>
+#include <FastLED.h>
 
 /***********************************************
  IMPORTANT: The APDS-9960 can only accept 3.3V!
@@ -46,10 +47,25 @@ void get_light_values(Data_RGBA &RGBA) {
   }
 }
 
-Data_RGBA = lightsensor_data;
+Data_RGBA  lightsensor_data;
+
+#define LED_PIN     5
+#define NUM_LEDS    14
+#define BRIGHTNESS  64
+#define LED_TYPE    WS2811
+#define COLOR_ORDER GRB
+CRGB leds[NUM_LEDS];
+
+#define UPDATES_PER_SECOND 100
+
+CRGBPalette16 currentPalette;
+TBlendType    currentBlending;
+
+extern CRGBPalette16 myRedWhiteBluePalette;
+extern const TProgmemPalette16 myRedWhiteBluePalette_p PROGMEM;
 
 void setup() {
-
+  delay( 3000 ); // power-up safety delay
   // Initialize Serial port
   Serial.begin(9600);
   Serial.println();
@@ -70,7 +86,13 @@ void setup() {
   } else {
     Serial.println(F("Something went wrong during light sensor init!"));
   }
-
+ 
+  FastLED.addLeds<LED_TYPE, LED_PIN, COLOR_ORDER>(leds, NUM_LEDS).setCorrection( TypicalLEDStrip );
+  FastLED.setBrightness(  BRIGHTNESS );
+  
+  currentPalette = RainbowColors_p;
+  currentBlending = LINEARBLEND;
+ 
   // Wait for initialization and calibration to finish
   delay(500);
 }
@@ -91,3 +113,28 @@ void loop() {
   delay(1000);
 }
 
+// This example shows how to set up a static color palette
+// which is stored in PROGMEM (flash), which is almost always more
+// plentiful than RAM.  A static PROGMEM palette like this
+// takes up 64 bytes of flash.
+const TProgmemPalette16 myRedWhiteBluePalette_p PROGMEM =
+{
+    CRGB::Red,
+    CRGB::Gray, // 'white' is too bright compared to red and blue
+    CRGB::Blue,
+    CRGB::Black,
+    
+    CRGB::Red,
+    CRGB::Gray,
+    CRGB::Blue,
+    CRGB::Black,
+    
+    CRGB::Red,
+    CRGB::Red,
+    CRGB::Gray,
+    CRGB::Gray,
+    CRGB::Blue,
+    CRGB::Blue,
+    CRGB::Black,
+    CRGB::Black
+};
