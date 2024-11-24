@@ -8,13 +8,14 @@
 //#include <ctime>
 #include <time.h>
 
+#define CREDENTIALS true
 
 #ifdef CREDENTIALS
 const char* ssid      = SECRET_SSID;               // Set you WiFi SSID
 const char* password  = SECRET_PASS;               // Set you WiFi password
 #else
-const char* ssid     = "FAMFEY01";
-const char* password = "1222CL5B0357720191";
+const char* ssid     = "";
+const char* password = "";
 #endif
 
 
